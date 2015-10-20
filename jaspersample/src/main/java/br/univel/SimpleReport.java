@@ -1,4 +1,9 @@
 package br.univel;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.JFrame;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -10,25 +15,35 @@ import net.sf.jasperreports.view.JasperViewer;
 
 public class SimpleReport {
 
-	private String arq = "C:\\Users\\fernandod\\JasperStudioWorkspace\\MyReports\\Blank_A4.jasper";
+	private String arq = "C:\\Users\\fernandod\\JasperStudioWorkspace\\MyReports\\simples.jasper";
 
 	public SimpleReport() {
 		
-		TableModel tableModel = TableModelData();
+		TableModel tableModel = getTableModel();
 		
-		JasperPrint jasperPrint = null;
-		TableModelData();
+		JasperPrint jp = null;
 		try {
-			jasperPrint = JasperFillManager.fillReport(arq, null,
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("empresa", "Petrobras");
+			map.put("telefone", "123pim567pim");
+			
+			jp = JasperFillManager.fillReport(arq, map,
 					new JRTableModelDataSource(tableModel));
-			JasperViewer jasperViewer = new JasperViewer(jasperPrint);
+			JasperViewer jasperViewer = new JasperViewer(jp);
+			
+			jasperViewer.setBounds(50, 50, 320, 240);
+			jasperViewer.setLocationRelativeTo(null);
+			jasperViewer.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			
 			jasperViewer.setVisible(true);
+			
 		} catch (JRException ex) {
 			ex.printStackTrace();
 		}
 	}
 
-	private TableModel TableModelData() {
+	private TableModel getTableModel() {
 		String[] columnNames = { "Id", "Nome", "Departamento", "Email" };
 		
 		String[][] data = {
