@@ -10,12 +10,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public abstract class AbstractPanel extends JPanel {
+public abstract class MolduraAbstrata extends JPanel {
 
+	protected abstract void configuraMiolo();
+	
 	/**
 	 * Create the panel.
 	 */
-	public AbstractPanel() {
+	public MolduraAbstrata() {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -46,6 +48,8 @@ public abstract class AbstractPanel extends JPanel {
 		panel_1.setBackground(Color.WHITE);
 		add(panel_1, BorderLayout.SOUTH);
 
+		
+		configuraMiolo();
 	}
 
 }
