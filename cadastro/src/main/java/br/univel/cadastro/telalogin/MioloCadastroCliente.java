@@ -23,7 +23,7 @@ public class MioloCadastroCliente extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel lblId = new JLabel("Id");
+		JLabel lblId = new JLabel("Id:");
 		GridBagConstraints gbc_lblId = new GridBagConstraints();
 		gbc_lblId.anchor = GridBagConstraints.EAST;
 		gbc_lblId.insets = new Insets(0, 0, 5, 5);
@@ -40,7 +40,7 @@ public class MioloCadastroCliente extends JPanel {
 		add(txfId, gbc_txfId);
 		txfId.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Nome");
+		JLabel lblNewLabel = new JLabel("Nome:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
